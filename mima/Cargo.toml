@@ -1,0 +1,11 @@
+[package]
+name = "mima"
+version = "0.1.0"
+authors = ["JohnnyJayJay <johnnyjayjay02@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+clap = "3.0.0-beta.2"
+rustyline = "7.1.0"
+mima-common = { path = "../mima-common" }
+byteorder = "1.3.4"
