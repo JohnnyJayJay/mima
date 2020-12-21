@@ -31,7 +31,7 @@ pub trait ReadMimaExt: ReadBytesExt {
         let value_count = byte_count / (VALUE_BYTES as usize);
         let mut cursor = Cursor::new(bytes);
         let mut values = Vec::with_capacity(byte_count / 3);
-        for i in 0..value_count {
+        for _i in 0..value_count {
             values.push(cursor.read_mima_val().unwrap())
         }
         Ok(values)
