@@ -10,8 +10,8 @@ use crate::{create_memdump};
 use std::convert::TryFrom;
 
 const HELP_MESSAGE: &'static str =
-    "`state` - print the current state of the machine
-`step` - run the next instruction and immediately brak again
+    "<ENTER> - run the next instruction and immediately break again
+`state` - print the current state of the machine
 `continue` - continue execution until the next breakpoint
 `break <addr>` - toggle breakpoint at the specified address
 `read <addr>` - print value at the given address
@@ -57,7 +57,7 @@ impl Debugger<'_> {
                     let args: Vec<&str> = input.split(' ').collect();
                     match args.as_slice() {
                         ["state"] => self.print_state(),
-                        ["step"] => self.step(),
+                        [""] => self.step(),
                         ["continue"] => self.continue_run(),
                         ["break", addr] => self.toggle_breakpoint(addr),
                         ["read", addr] => self.print_mem(addr),
