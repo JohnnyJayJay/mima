@@ -23,7 +23,6 @@ pub trait ReadMimaExt: ReadBytesExt {
     fn read_all_mima_vals(&mut self) -> io::Result<Vec<MimaValue>> {
         let mut bytes = Vec::new();
         let byte_count = self.read_to_end(&mut bytes)?;
-        dbg!(byte_count);
         if byte_count % (VALUE_BYTES as usize) != 0 {
             return io::Result::Err(
                 io::Error::new(io::ErrorKind::InvalidData,
@@ -33,7 +32,6 @@ pub trait ReadMimaExt: ReadBytesExt {
         let mut cursor = Cursor::new(bytes);
         let mut values = Vec::with_capacity(byte_count / 3);
         for i in 0..value_count {
-            dbg!(i);
             values.push(cursor.read_mima_val().unwrap())
         }
         Ok(values)
